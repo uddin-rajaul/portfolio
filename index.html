@@ -1,108 +1,322 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rajaul Uddin - Portfolio</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts (Inter & Roboto Mono) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- AOS CSS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        // Custom Tailwind Configuration (similar to what was in tailwind.config.mjs)
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0D0D0D',    // Very dark, almost black
+                        'brand-bg': '#1A1A1A',      // Slightly lighter for cards/sections
+                        'brand-text': '#E0E0E0',    // Main text (off-white)
+                        'brand-subtext': '#A0A0A0', // Secondary text
+                        'brand-accent': '#f2c17d',  // Your existing accent color
+                        'brand-accent-darker': '#d9a057', // For hover states on accent
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Roboto Mono', 'monospace'],
+                    },
+                    keyframes: {
+                        typedBlink: {
+                            '50%': { opacity: '0.0' }
+                        }
+                      },
+                      animation: {
+                        typedBlink: 'typedBlink 0.7s infinite'
+                      },
+                }
+            }
+        }
+    </script>
 </head>
 
-<body>
-    <div class="hero">🚀 Welcome to My Portfolio</div>
+<body class="bg-brand-dark text-brand-text font-sans antialiased">
 
-    <header>
-        <div class="profile-picture"></div>
-        <h1>Rajaul Uddin</h1>
-        <p>👨‍💻 Software Engineer | 🔍 AI/ML Enthusiast | 🛠 Backend Developer</p>
-        <a href="files/my-resume.pdf" class="cv-button" download>📄 Download My CV</a>
+    <!-- Navigation Bar -->
+    <nav class="bg-brand-dark/80 backdrop-blur-md sticky top-0 z-50 py-4 border-b border-brand-bg/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold text-brand-text hover:text-brand-accent transition-colors duration-300">
+                / Rajaul Uddin
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#about" class="nav-link text-brand-subtext hover:text-brand-accent transition-colors duration-300">/about</a>
+                <a href="#skills" class="nav-link text-brand-subtext hover:text-brand-accent transition-colors duration-300">/skills</a>
+                <a href="#projects" class="nav-link text-brand-subtext hover:text-brand-accent transition-colors duration-300">/projects</a>
+                <a href="#contact" class="nav-link text-brand-subtext hover:text-brand-accent transition-colors duration-300">/contact</a>
+                <a href="files/my-resume.pdf" class="text-brand-subtext hover:text-brand-accent transition-colors duration-300" download>/resume</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" aria-label="Open menu" class="text-brand-subtext hover:text-brand-accent">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-brand-bg/95 absolute top-full left-0 right-0 py-2 border-t border-brand-bg/50">
+            <a href="#about" class="nav-link block px-4 py-2 text-brand-subtext hover:text-brand-accent hover:bg-brand-dark transition-colors duration-300">/about</a>
+            <a href="#skills" class="nav-link block px-4 py-2 text-brand-subtext hover:text-brand-accent hover:bg-brand-dark transition-colors duration-300">/skills</a>
+            <a href="#projects" class="nav-link block px-4 py-2 text-brand-subtext hover:text-brand-accent hover:bg-brand-dark transition-colors duration-300">/projects</a>
+            <a href="#contact" class="nav-link block px-4 py-2 text-brand-subtext hover:text-brand-accent hover:bg-brand-dark transition-colors duration-300">/contact</a>
+            <a href="files/my-resume.pdf" class="block px-4 py-2 text-brand-subtext hover:text-brand-accent hover:bg-brand-dark transition-colors duration-300" download>/resume</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="min-h-[calc(100vh-80px)] flex items-center justify-center py-16 lg:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-bg to-brand-dark opacity-50"></div>
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8 items-center">
+            <div class="text-center md:text-left" data-aos="fade-right">
+                <img 
+                    src="images/IMG_2715.jpg" 
+                    alt="Rajaul Uddin" 
+                    class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-2 border-brand-accent mb-6 mx-auto md:mx-0 shadow-lg"
+                >
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-text mb-4">
+                    Rajaul Uddin
+                </h1>
+                <p class="text-xl sm:text-2xl text-brand-subtext mb-8">
+                    <span id="typed-subtitle-hero"></span>
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="files/my-resume.pdf" class="bg-brand-accent hover:bg-brand-accent-darker text-brand-dark font-semibold py-3 px-6 rounded-md shadow-md transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-opacity-50" download>
+                        Download CV
+                    </a>
+                    <a href="#contact" class="border-2 border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-brand-dark font-semibold py-3 px-6 rounded-md shadow-md transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-opacity-50">
+                        Get in Touch
+                    </a>
+                </div>
+            </div>
+            <div class="text-center md:text-left mt-8 md:mt-0" data-aos="fade-left" data-aos-delay="200">
+                <p class="text-lg text-brand-subtext leading-relaxed mb-6 max-w-md mx-auto md:mx-0">
+                    A final-year CSIT student with a passion for crafting efficient backend systems and exploring the frontiers of AI/ML. I love turning complex problems into elegant software solutions.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-6">
+                    <!-- GitHub Icon SVG -->
+                    <a href="https://github.com/uddin-rajaul" target="_blank" class="text-brand-subtext hover:text-brand-accent transition-colors duration-300" aria-label="GitHub">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.201 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <!-- LinkedIn Icon SVG -->
+                    <a href="https://www.linkedin.com/in/rajaul-uddin/" target="_blank" class="text-brand-subtext hover:text-brand-accent transition-colors duration-300" aria-label="LinkedIn">
+                        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <section>
-        <h2>🧐 WHOAMI</h2>
-        <p>Final-year BSc CSIT student with a strong interest in Oracle database administration and backend development. Skilled in SQL, PL/SQL, Python, and database management. Passionate about solving real-world problems through AI/ML, software engineering, and system security.</p>
-    </section>
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+        <!-- About Section -->
+        <section id="about" class="section-container group" data-aos="fade-up">
+            <h2 class="section-title text-3xl font-bold text-brand-accent mb-10 relative inline-block">
+                🧐 WHOAMI
+                <span class="section-title-underline"></span>
+            </h2>
+            <p class="text-brand-subtext text-lg leading-relaxed max-w-3xl">
+                Final-year BSc CSIT student with a strong interest in Oracle database administration and backend development. Skilled in SQL, PL/SQL, Python, and database management. Passionate about solving real-world problems through AI/ML, software engineering, and system security.
+            </p>
+        </section>
 
-    <section>
-        <h2>🎓 Education</h2>
-        <p><strong>🏫 Trinity Int'l College, Tribhuwan University</strong> (2021 - Present)</p>
-        <p>Studying Object-Oriented Programming, Database Systems, Operating Systems, Calculus, and Web Development.</p>
-        <a href="https://www.trinity.edu.np/" target="_blank">🔗 College Website</a>
-    </section>
-
-    <section>
-        <h2>💻 Technical Skills</h2>
-        <ul>
-            <li><strong>Programming Languages:</strong> Python, SQL, C</li>
-            <li><strong>Web Development:</strong> HTML, CSS, JavaScript</li>
-            <li><strong>Database Management:</strong> Oracle, PostgreSQL, SQLAlchemy, PL/SQL</li>
-            <li><strong>Backend Frameworks:</strong> FastAPI, Django, DRF</li>
-            <li><strong>Machine Learning:</strong> SVM, Image Segmentation (U²-Net)</li>
-            <li><strong>Operating Systems:</strong> Microsoft Windows, Linux, macOS</li>
-            <li><strong>Networking:</strong> Basic configuration of routers, switches, and servers</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>🚀 Projects</h2>
-        <ul>
-            <li>
-                <strong>YapBoard – AI-Powered Whiteboard</strong> (Sep 2024 - Dec 2024)
-                <button class="expand-button" onclick="toggleDescription('project1', this)">Expand</button>
-                <div id="project1" class="project-description">
-                    🖍 Developed an interactive whiteboard with real-time AI-powered background removal using U²-Net. <br>
-                    🛠 Integrated PostgreSQL with SQLAlchemy for database management and implemented JWT authentication. <br>
-                    ⚡ Built with FastAPI for scalability and future real-time collaboration. <br>
+        <!-- Skills Section -->
+        <section id="skills" class="section-container group" data-aos="fade-up">
+            <h2 class="section-title text-3xl font-bold text-brand-accent mb-10 relative inline-block">
+                💻 Technical Skills
+                <span class="section-title-underline"></span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Category: Languages -->
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-semibold text-brand-text mb-3">Languages</h3>
+                    <ul class="space-y-2 text-brand-subtext">
+                        <li class="flex items-center text-sm"><span class="text-brand-accent mr-2 text-lg">›</span>Python, SQL, C, PL/SQL</li>
+                    </ul>
                 </div>
-            </li>
-            <br>
-            <li>
-                <strong>Diabetes Prediction – Django & ML</strong> (April 2024 - May 2024)
-                <button class="expand-button" onclick="toggleDescription('project2', this)">Expand</button>
-                <div id="project2" class="project-description">
-                    📈 Machine Learning project utilizing an SVM algorithm to predict diabetic conditions based on input data. <br>
-                    🏥 Developed using Python and Django, with an interactive user interface for medical predictions. <br>
-                    🔗 <a href="https://github.com/uddin-rajaul/Diabetes-prediction" target="_blank">GitHub Repository</a>
+                <!-- Skill Category: Web Development -->
+                <div data-aos="fade-up" data-aos-delay="150">
+                    <h3 class="text-xl font-semibold text-brand-text mb-3">Web Development</h3>
+                    <ul class="space-y-2 text-brand-subtext">
+                        <li class="flex items-center text-sm"><span class="text-brand-accent mr-2 text-lg">›</span>HTML, CSS, JavaScript</li>
+                    </ul>
                 </div>
-            </li>
-            <br>
-            <li>
-                <strong>E-Commerce API – Django Rest Framework</strong> (March 2024 - April 2024)
-                <button class="expand-button" onclick="toggleDescription('project3', this)">Expand</button>
-                <div id="project3" class="project-description">
-                    🛒 Developed a scalable E-commerce API supporting product retrieval, search functionality, image uploads, and product categorization. <br>
-                    🏗 Implemented using Django Rest Framework (DRF) and PostgreSQL. <br>
-                    🔗 <a href="https://github.com/uddin-rajaul/e-com" target="_blank">GitHub Repository</a>
+                <!-- Skill Category: Database Management -->
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold text-brand-text mb-3">Database Management</h3>
+                    <ul class="space-y-2 text-brand-subtext">
+                         <li class="flex items-center text-sm"><span class="text-brand-accent mr-2 text-lg">›</span>Oracle, PostgreSQL, SQLAlchemy</li>
+                    </ul>
                 </div>
-            </li>
-        </ul>
-    </section>
+                <!-- Skill Category: Backend Frameworks -->
+                <div data-aos="fade-up" data-aos-delay="250">
+                    <h3 class="text-xl font-semibold text-brand-text mb-3">Backend Frameworks</h3>
+                    <ul class="space-y-2 text-brand-subtext">
+                         <li class="flex items-center text-sm"><span class="text-brand-accent mr-2 text-lg">›</span>FastAPI, Django, DRF</li>
+                    </ul>
+                </div>
+                <!-- Skill Category: Machine Learning -->
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold text-brand-text mb-3">Machine Learning</h3>
+                    <ul class="space-y-2 text-brand-subtext">
+                        <li class="flex items-center text-sm"><span class="text-brand-accent mr-2 text-lg">›</span>SVM, Image Segmentation (U²-Net)</li>
+                    </ul>
+                </div>
+                <!-- Skill Category: Other -->
+                <div data-aos="fade-up" data-aos-delay="350">
+                    <h3 class="text-xl font-semibold text-brand-text mb-3">Other</h3>
+                    <ul class="space-y-2 text-brand-subtext">
+                        <li class="flex items-center text-sm"><span class="text-brand-accent mr-2 text-lg">›</span>OS: Windows, Linux, macOS</li>
+                        <li class="flex items-center text-sm"><span class="text-brand-accent mr-2 text-lg">›</span>Basic Networking</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>🎯 Interests</h2>
-        <ul>
-            <li>📚 Learning about Database Management & Performance Optimization</li>
-            <li>🖥 AI & Machine Learning Research</li>
-            <li>📡 Cybersecurity & Ethical Hacking</li>
-            <li>🎮 Gaming & Competitive Esports</li>
-            <li>✈️ Traveling & Exploring New Technologies</li>
-        </ul>
-    </section>
+        <!-- Education Section -->
+        <section id="education" class="section-container group" data-aos="fade-up">
+            <h2 class="section-title text-3xl font-bold text-brand-accent mb-10 relative inline-block">
+                🎓 Education
+                <span class="section-title-underline"></span>
+            </h2>
+            <div class="bg-brand-bg p-6 rounded-lg shadow-xl transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
+                <h3 class="text-xl font-semibold text-brand-text">Trinity Int'l College, Tribhuwan University</h3>
+                <p class="text-brand-accent text-sm mb-2">(2021 - Present)</p>
+                <p class="text-brand-subtext mb-3 text-sm">Studying Object-Oriented Programming, Database Systems, Operating Systems, Calculus, and Web Development.</p>
+                <a href="https://www.trinity.edu.np/" target="_blank" class="text-brand-accent hover:text-brand-accent-darker font-medium text-sm inline-block transition-transform duration-200 hover:translate-x-1">
+                    College Website <span class="ml-1">→</span>
+                </a>
+            </div>
+        </section>
 
-    <section>
-        <h2>📩 Contact</h2>
-        <p>I do check my emails... unless you're trying to recruit me for a job I’m clearly unqualified for.</p>
-        <div class="contact-info">
-            <a href="mailto:uddin.rajaul1@gmail.com">📧 Email</a>
-            <a href="https://github.com/uddin-rajaul" target="_blank">
-                <img src="images/github-mark.png" alt="GitHub" width="20"> GitHub</a>
-            <a href="https://www.linkedin.com/in/rajaul-uddin/" target="_blank">
-                <img src="images/InBug-Black.png" alt="LinkedIn" width="20"> LinkedIn</a>
-            <a href="https://uddin-rajaul.vercel.app/" target="_blank">🔗 Portfolio</a>
-        </div>
-    </section>
+        <!-- Projects Section -->
+        <section id="projects" class="section-container group">
+            <h2 class="section-title text-3xl font-bold text-brand-accent mb-10 relative inline-block" data-aos="fade-up">
+                🚀 Featured Works
+                <span class="section-title-underline"></span>
+            </h2>
+            <div class="space-y-12">
+                <!-- Project 1: YapBoard -->
+                <div class="project-card bg-brand-bg rounded-lg shadow-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]" data-aos="fade-right">
+                    <!-- Optional: Add image here if you have one -->
+                    
+                    <div class="p-6 md:p-8 flex-1">
+                        <p class="text-xs text-brand-accent font-mono uppercase tracking-wider mb-1">Web Development / AI</p>
+                        <h3 class="text-2xl font-semibold text-brand-text mb-2">YapBoard – AI-Powered Whiteboard</h3>
+                        <p class="text-sm text-brand-subtext mb-3">(Sep 2024 - Dec 2024)</p>
+                        <p class="text-brand-subtext leading-relaxed mb-4 text-sm">Interactive whiteboard with real-time AI background removal (U²-Net). Built with FastAPI, PostgreSQL, SQLAlchemy, and JWT authentication for scalability.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">FastAPI</span><span class="tech-tag">U²-Net</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">AI</span><span class="tech-tag">JWT</span>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Project 2: Diabetes Prediction -->
+                <div class="project-card bg-brand-bg rounded-lg shadow-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]" data-aos="fade-left">
+                    <div class="p-6 md:p-8 flex-1">
+                        <p class="text-xs text-brand-accent font-mono uppercase tracking-wider mb-1">Machine Learning / Web App</p>
+                        <h3 class="text-2xl font-semibold text-brand-text mb-2">Diabetes Prediction – Django & ML</h3>
+                        <p class="text-sm text-brand-subtext mb-3">(April 2024 - May 2024)</p>
+                        <p class="text-brand-subtext leading-relaxed mb-4 text-sm">ML project using SVM to predict diabetic conditions. Interactive UI built with Python and Django.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">Django</span><span class="tech-tag">Python</span><span class="tech-tag">SVM</span><span class="tech-tag">ML</span>
+                        </div>
+                        <div class="mt-auto pt-4">
+                            <a href="https://github.com/uddin-rajaul/Diabetes-prediction" target="_blank" class="project-link">
+                                GitHub <span class="ml-1">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: E-Commerce API -->
+                <div class="project-card bg-brand-bg rounded-lg shadow-xl overflow-hidden flex flex-col md:flex-row transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]" data-aos="fade-right">
+                    <div class="p-6 md:p-8 flex-1">
+                        <p class="text-xs text-brand-accent font-mono uppercase tracking-wider mb-1">Backend API</p>
+                        <h3 class="text-2xl font-semibold text-brand-text mb-2">E-Commerce API – Django Rest Framework</h3>
+                        <p class="text-sm text-brand-subtext mb-3">(March 2024 - April 2024)</p>
+                        <p class="text-brand-subtext leading-relaxed mb-4 text-sm">Scalable E-commerce API supporting product management, search, image uploads, and categorization using DRF and PostgreSQL.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-tag">DRF</span><span class="tech-tag">Django</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">API</span>
+                        </div>
+                         <div class="mt-auto pt-4">
+                            <a href="https://github.com/uddin-rajaul/e-com" target="_blank" class="project-link">
+                                GitHub <span class="ml-1">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="interests" class="section-container group" data-aos="fade-up">
+             <h2 class="section-title text-3xl font-bold text-brand-accent mb-10 relative inline-block">
+                🎯 Interests
+                <span class="section-title-underline"></span>
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-brand-subtext">
+                <p class="interest-item" data-aos="zoom-in-up" data-aos-delay="50"><span class="mr-3 text-xl">📚</span>Learning about Database Management & Performance Optimization</p>
+                <p class="interest-item" data-aos="zoom-in-up" data-aos-delay="100"><span class="mr-3 text-xl">🖥️</span>AI & Machine Learning Research</p>
+                <p class="interest-item" data-aos="zoom-in-up" data-aos-delay="150"><span class="mr-3 text-xl">📡</span>Cybersecurity & Ethical Hacking</p>
+                <p class="interest-item" data-aos="zoom-in-up" data-aos-delay="200"><span class="mr-3 text-xl">🎮</span>Gaming & Competitive Esports</p>
+                <p class="interest-item" data-aos="zoom-in-up" data-aos-delay="250"><span class="mr-3 text-xl">✈️</span>Traveling & Exploring New Technologies</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-container text-center group" data-aos="fade-up">
+            <h2 class="section-title text-3xl font-bold text-brand-accent mb-10 relative inline-block mx-auto">
+                📩 Contact
+                <span class="section-title-underline"></span>
+            </h2>
+            <p class="text-brand-subtext text-lg mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Feel free to reach out for collaborations, questions, or just to say hi!
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6" data-aos="fade-up" data-aos-delay="200">
+                <!-- Email Link -->
+                <a href="mailto:uddin.rajaul1@gmail.com" class="contact-link group/link">
+                    <svg class="w-5 h-5 mr-2 group-hover/link:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Email Me
+                </a>
+                <!-- GitHub Link -->
+                <a href="https://github.com/uddin-rajaul" target="_blank" class="contact-link group/link">
+                     <svg class="w-5 h-5 mr-1.5 group-hover/link:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.379.201 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.017C22 6.484 17.522 2 12 2Z" clip-rule="evenodd" /></svg>
+                    GitHub
+                </a>
+                <!-- LinkedIn Link -->
+                <a href="https://www.linkedin.com/in/rajaul-uddin/" target="_blank" class="contact-link group/link">
+                    <svg class="w-5 h-5 mr-1.5 group-hover/link:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Typed.js -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- Custom Scripts -->
     <script src="js/scripts.js"></script>
 </body>
-
 </html>
